@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Attendance - Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+  <h2>Smart Attendance</h2>
+
+  <a href="dashboard.html">🏠 Dashboard</a>
+  <a href="employees.html">👥 Employees</a>
+  <a href="reports.html">📊 Reports</a>
+  <a href="test.html">🧪 Test</a>
+  <a href="settings.html">⚙ Settings</a>
+  <a href="#" onclick="logout()">🚪 Logout</a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h1>Dashboard</h1>
+
+    <div style="display:flex;gap:15px;align-items:center;">
+      <span id="deviceStatus" class="badge offline">
+        Device Offline
+      </span>
+
+      <button onclick="toggleTheme()">🌙</button>
+    </div>
+  </div>
+
+  <!-- STATS CARDS -->
+  <div class="cards">
+
+    <div class="card gradient1">
+      <h3>Total Employees</h3>
+      <h1 id="totalEmployees">0</h1>
+    </div>
+
+    <div class="card gradient2">
+      <h3>Present Today</h3>
+      <h1 id="presentCount">0</h1>
+    </div>
+
+    <div class="card gradient3">
+      <h3>Absent Today</h3>
+      <h1 id="absentCount">0</h1>
+    </div>
+
+  </div>
+
+  <!-- DASHBOARD GRID -->
+  <div class="dashboard-grid">
+
+    <!-- DONUT SECTION -->
+    <div class="card">
+      <h3>Attendance Overview</h3>
+
+      <div class="chart-container">
+        <canvas id="attendanceChart"></canvas>
+        <div id="donutCenter" class="center-text">0%</div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div>
+
+      <!-- PRESENT LIST -->
+      <div class="card">
+        <h3>Present Employees</h3>
+        <div id="presentList"></div>
+      </div>
+
+      <!-- ACTIVITY LOG -->
+      <div class="card" style="margin-top:20px;">
+        <h3>Recent Activity</h3>
+        <div id="activityList"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<script>
+  // Extra safety redirect if session expired
+  firebase.auth().onAuthStateChanged(function(user){
+    if(!user){
+      window.location.href="login.html";
+    }
+  });
+</script>
+
+</body>
+</html>

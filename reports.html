@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reports</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+  <!-- Main Script -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Smart Attendance</h2>
+  <a href="dashboard.html">🏠 Dashboard</a>
+  <a href="employees.html">👥 Employees</a>
+  <a href="reports.html">📊 Reports</a>
+  <a href="test.html">🧪 Test</a>
+  <a href="settings.html">⚙ Settings</a>
+  <a href="#" onclick="logout()">🚪 Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h1>Reports</h1>
+    <div>
+      <button onclick="toggleTheme()">🌙</button>
+    </div>
+  </div>
+
+  <!-- DATE FILTER -->
+  <div class="card">
+    <h3>Select Date Range</h3>
+
+    <div style="margin-top:15px; display:flex; gap:15px; flex-wrap:wrap;">
+      <input type="date" id="fromDate">
+      <input type="date" id="toDate">
+      <button id="generateBtn">Generate Report</button>
+    </div>
+  </div>
+
+  <!-- EXPORT OPTIONS -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Export</h3>
+
+    <div style="margin-top:15px; display:flex; gap:15px;">
+      <button id="csvBtn">Download CSV</button>
+      <button id="jsonBtn">Download JSON</button>
+    </div>
+  </div>
+
+  <!-- REPORT TABLE -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Report Data</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Employee ID</th>
+          <th>UID</th>
+          <th>Status</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody id="reportTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- Attach Buttons After Load -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const generateBtn = document.getElementById("generateBtn");
+  const csvBtn = document.getElementById("csvBtn");
+  const jsonBtn = document.getElementById("jsonBtn");
+
+  if (generateBtn) {
+    generateBtn.addEventListener("click", function () {
+      if (typeof generateReport === "function") {
+        generateReport();
+      } else {
+        alert("Report function not loaded");
+      }
+    });
+  }
+
+  if (csvBtn) {
+    csvBtn.addEventListener("click", function () {
+      if (typeof downloadCSV === "function") {
+        downloadCSV();
+      } else {
+        alert("CSV function not loaded");
+      }
+    });
+  }
+
+  if (jsonBtn) {
+    jsonBtn.addEventListener("click", function () {
+      if (typeof downloadJSON === "function") {
+        downloadJSON();
+      } else {
+        alert("JSON function not loaded");
+      }
+    });
+  }
+
+});
+</script>
+
+</body>
+</html>

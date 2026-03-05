@@ -1,0 +1,191 @@
+# Smart Attendance System – Version 1
+
+Smart Attendance System is an IoT-based attendance tracking solution using **ESP32, RFID, Firebase, and a Web Dashboard**.
+
+Employees scan their RFID cards, and attendance is recorded automatically in **Firebase Realtime Database** and displayed on a **live web dashboard**.
+
+This project is **Version 1 (V1)** of the system and focuses on building the **core attendance workflow and dashboard interface**.
+
+
+# Features (V1)
+
+### RFID Attendance
+
+* Scan RFID card using ESP32
+* Read UID of card
+* Send UID to Firebase
+* Automatically mark attendance
+
+### Employee Management
+
+* Add employees
+* Assign RFID UID
+* Edit employee details
+* Delete employees
+
+### Live Dashboard
+
+* Total employees
+* Present employees today
+* Absent employees today
+* Attendance percentage chart
+* Present employee list
+
+### Activity Logs
+
+* Records recent system activity
+* Shows attendance events
+
+### Device Status
+
+* Shows ESP32 device status
+* Online / Offline indicator
+
+### Test Mode
+
+* Scan RFID card to verify employee
+* Displays employee name
+
+### Reports
+
+* Generate attendance report
+* Select date range
+* Export CSV
+* Export JSON
+
+### System Settings
+
+* Reset today's attendance
+* Clear attendance by date
+* Reset all attendance data
+* Restart ESP32
+* Clear activity logs
+
+---
+
+# Technology Stack
+
+### Hardware
+
+* ESP32
+* RFID RC522
+* RFID Cards
+
+### Software
+
+Frontend
+
+* HTML
+* CSS
+* JavaScript
+
+Backend
+
+* Firebase Realtime Database
+* Firebase Authentication
+
+Libraries
+
+* Chart.js (Dashboard graphs)
+
+---
+
+# System Architecture
+
+RFID Card
+↓
+ESP32 reads UID
+↓
+UID sent to Firebase
+↓
+Web Dashboard reads Firebase
+↓
+Attendance updated in real time
+
+---
+
+# Project Structure
+
+   "version-1"
+smart-attendance-system
+│
+├── dashboard.html
+├── employees.html
+├── login.html
+├── reports.html
+├── settings.html
+├── test.html
+├── logo.png
+├── script.js
+├── style.css
+│
+└── README.md
+
+
+---
+
+# How It Works
+
+1. Employee scans RFID card.
+2. ESP32 reads the card UID.
+3. UID is uploaded to Firebase.
+4. Dashboard verifies employee UID.
+5. Attendance is recorded for the day.
+6. Dashboard updates instantly.
+
+---
+
+# Setup Instructions
+
+
+### Configure Firebase
+
+Open **script.js** and update Firebase configuration.
+
+### Run Dashboard
+
+Open:
+
+login.html
+
+in your browser using live server, later you can host the webpage online once you feel the project is working fine
+
+---
+
+# Version History
+
+### Version 1 (Current)
+
+* RFID based attendance
+* Firebase integration
+* Web dashboard
+* Employee management
+* Reports export
+* Device control
+* Activity logs
+
+### Planned for Version 2
+
+* Mobile responsive dashboard
+* Face recognition attendance
+* Employee profile photos
+* Monthly analytics
+* Email notifications
+
+---
+
+# Author
+
+Chethana M
+https://www.linkedin.com/in/chethana-m-888ab7193/
+mchethana619@gmail.com
+
+
+Interests:
+
+* IoT Systems
+* data Analytics
+* Web Development
+* Real-time dashboards
+
+Thank You

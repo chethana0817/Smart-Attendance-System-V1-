@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Smart Attendance</h2>
+  <a href="dashboard.html">🏠 Dashboard</a>
+  <a href="employees.html">👥 Employees</a>
+  <a href="reports.html">📊 Reports</a>
+  <a href="test.html">🧪 Test</a>
+  <a href="settings.html">⚙ Settings</a>
+   <a href="#" onclick="logout()">🚪 Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h1>Settings</h1>
+    <div>
+      <button onclick="toggleTheme()">🌙</button>
+    </div>
+  </div>
+
+  <!-- RESET TODAY -->
+  <div class="card">
+    <h3>Reset Today's Attendance</h3>
+    <div style="margin-top:15px;">
+      <button onclick="resetToday()">Reset Today</button>
+    </div>
+  </div>
+
+  <!-- CLEAR BY DATE -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Clear Attendance By Date</h3>
+    <div style="margin-top:15px; display:flex; gap:15px;">
+      <input type="date" id="clearDate">
+      <button onclick="clearSelectedDate()">Clear Selected Date</button>
+    </div>
+  </div>
+
+  <!-- RESET ALL -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Reset All Attendance Data</h3>
+    <div style="margin-top:15px;">
+      <button onclick="resetAll()">Reset All</button>
+    </div>
+  </div>
+
+  <!-- DEVICE CONTROL -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Device Control</h3>
+    <div style="margin-top:15px;">
+      <button onclick="restartESP()">Restart ESP32</button>
+    </div>
+  </div>
+
+  <!-- CLEAR ACTIVITY -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Clear Activity Logs</h3>
+    <div style="margin-top:15px;">
+      <button onclick="clearActivity()">Clear Activity</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Attendance - Employees</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+  <h2>Smart Attendance</h2>
+
+  <a href="dashboard.html">🏠 Dashboard</a>
+  <a href="employees.html">👥 Employees</a>
+  <a href="reports.html">📊 Reports</a>
+  <a href="test.html">🧪 Test</a>
+  <a href="settings.html">⚙ Settings</a>
+  <a href="#" onclick="logout()">🚪 Logout</a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h1>Employees</h1>
+
+    <div style="display:flex;gap:15px;">
+      <button onclick="openModal()">+ Add Employee</button>
+      <button onclick="toggleTheme()">🌙</button>
+    </div>
+  </div>
+
+  <!-- EMPLOYEE TABLE -->
+  <div class="card">
+
+    <h3>Employee List</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Employee ID</th>
+          <th>UID</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="employeeTable"></tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="employeeModal">
+
+  <div class="modal-content">
+
+    <h3 id="modalTitle">Add Employee</h3>
+
+    <input type="text" id="empName" placeholder="Employee Name">
+    <input type="text" id="empId" placeholder="Employee ID">
+    <input type="text" id="empUid" placeholder="Card UID" readonly>
+
+    <button onclick="startEnrollMode()">Scan Card</button>
+    <button onclick="saveEmployee()">Save</button>
+    <button onclick="closeModal()">Cancel</button>
+
+  </div>
+
+</div>
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast"></div>
+
+<script>
+  // Extra session protection
+  firebase.auth().onAuthStateChanged(function(user){
+    if(!user){
+      window.location.href="login.html";
+    }
+  });
+</script>
+
+</body>
+</html>
